@@ -1,0 +1,99 @@
+{
+  "swagger" : "2.0",
+  "info" : {
+    "description" : "BookStore APIs exposed from a Java EE back-end to an Angular front-end",
+    "version" : "1.0.0",
+    "title" : "BookStore APIs",
+    "contact" : {
+      "name" : "Antonio Goncalves",
+      "url" : "https://app.pluralsight.com/library/search?q=Antonio+Goncalves",
+      "email" : "antonio.goncalves@gmail.com"
+    }
+  },
+  "host" : "localhost:8080",
+  "basePath" : "/bookstore-back/api",
+  "tags" : [ {
+    "name" : "Book"
+  } ],
+  "schemes" : [ "http", "https" ],
+  "paths" : {
+    "/books/{id}" : {
+      "get" : {
+        "tags" : [ "Book" ],
+        "summary" : "Returns a book by id",
+        "description" : "",
+        "operationId" : "getBook",
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "required" : true,
+          "type" : "integer",
+          "minimum" : 1.0,
+          "format" : "int64"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Book Found",
+            "schema" : {
+              "$ref" : "#/definitions/Book"
+            }
+          },
+          "404" : {
+            "description" : "Book not Found"
+          }
+        }
+      }
+    }
+  },
+  "definitions" : {
+    "Book" : {
+      "type" : "object",
+      "required" : [ "isbn", "name" ],
+      "properties" : {
+        "id" : {
+          "type" : "integer",
+          "format" : "int64",
+          "description" : "Identifier"
+        },
+        "name" : {
+          "type" : "string",
+          "description" : "Title of the book",
+          "minLength" : 1,
+          "maxLength" : 200
+        },
+        "description" : {
+          "type" : "string",
+          "description" : "Description of the book",
+          "minLength" : 1,
+          "maxLength" : 10000
+        },
+        "unitPrice" : {
+          "type" : "number",
+          "format" : "float"
+        },
+        "isbn" : {
+          "type" : "string",
+          "minLength" : 1,
+          "maxLength" : 50
+        },
+        "publicationDate" : {
+          "type" : "string",
+          "format" : "date-time"
+        },
+        "imgUrl" : {
+          "type" : "string"
+        },
+        "language" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "nbOfpages" : {
+          "type" : "integer",
+          "format" : "int32"
+        }
+      },
+      "description" : "Book Resource Representation"
+    }
+  }
+}

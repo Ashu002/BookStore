@@ -12,26 +12,33 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Past;
 import javax.validation.constraints.Size;
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+
 /**
  * Created by ashutosh on 25/7/17.
  */
 @Entity
+@ApiModel(description = "Book Resource Representation")
 public class Book {
 
 	@Id @GeneratedValue
+	@ApiModelProperty("Identifier")
 	private Long id;
 
 
-	@Column(length = 200)
+	@Column(name = "title", length = 200)
 	@NotNull
 	@Size(min = 1, max = 200)
+	@ApiModelProperty("Title of the book")
 	private String name;
 
-	@Column(length = 1000)
-	@Size(min = 1, max = 1000)
+	@Column(length = 10000)
+	@Size(min = 1, max = 10000)
+	@ApiModelProperty("Description of the book")
 	private String description;
 
-	@Column(name = "unit_price")
+	@Column(name = "unit_cost")
 	private Float unitPrice;
 
 	@NotNull
@@ -46,10 +53,10 @@ public class Book {
 	@Column(name = "nb_of_pages")
 	private Integer nbOfPages;
 
-	@Column(name = "img_url")
+	@Column(name = "image_url")
 	private String imgUrl;
 
-	private Language language;
+	private Integer language;
 
 	public Long getId() {
 		return id;
@@ -115,11 +122,11 @@ public class Book {
 		this.imgUrl = imgUrl;
 	}
 
-	public Language getLanguage() {
+	public Integer getLanguage() {
 		return language;
 	}
 
-	public void setLanguage(Language language) {
+	public void setLanguage(Integer language) {
 		this.language = language;
 	}
 

@@ -24,7 +24,7 @@ public class BookRepositoryTest {
 
 	@Test
 	public void create() throws Exception {
-		TestCase.assertEquals(Long.valueOf(0),this.bookRepository.CountAll());
+		TestCase.assertEquals(Long.valueOf(0),this.bookRepository.countAll());
 	}
 
 	@Deployment

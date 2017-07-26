@@ -8,6 +8,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Past;
+import javax.validation.constraints.Size;
 
 /**
  * Created by ashutosh on 25/7/17.
@@ -18,19 +21,26 @@ public class Book {
 	@Id @GeneratedValue
 	private Long id;
 
+
 	@Column(length = 200)
+	@NotNull
+	@Size(min = 1, max = 200)
 	private String name;
 
 	@Column(length = 1000)
+	@Size(min = 1, max = 1000)
 	private String description;
 
 	@Column(name = "unit_price")
 	private Float unitPrice;
 
+	@NotNull
+	@Size(min = 1, max = 50)
 	private String isbn;
 
 	@Column(name = "publication_date")
 	@Temporal(TemporalType.DATE)
+	@Past
 	private Date publicationDate;
 
 	@Column(name = "nb_of_pages")

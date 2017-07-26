@@ -5,6 +5,7 @@ import static javax.transaction.Transactional.TxType.SUPPORTS;
 
 import java.util.List;
 
+import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
@@ -12,11 +13,19 @@ import javax.transaction.Transactional;
 import javax.validation.constraints.NotNull;
 
 import com.pluralsight.bookstore.model.Book;
+import com.pluralsight.bookstore.util.NumberGenerator;
+import com.pluralsight.bookstore.util.TextUtil;
 
 /**
  * Created by ashutosh on 25/7/17.
  */
 public class BookRepository {
+
+	@Inject
+	TextUtil textUtil;
+
+	@Inject
+	NumberGenerator numberGenerator;
 
 	@PersistenceContext(unitName = "bookStorePU")
 	private EntityManager em;
@@ -28,6 +37,8 @@ public class BookRepository {
 
 	@Transactional(REQUIRED)
 	public Book create(@NotNull Book book){
+		book.setName(textUtil.sanitize(book.getName()));
+		book.setIsbn(numberGenerator.generateNumber());
 		em.persist(book);
 		return book;
 	}

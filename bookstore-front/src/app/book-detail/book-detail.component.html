@@ -1,11 +1,11 @@
 <h2> Book Detail Page!</h2>
-<form (ngSubmit)="delete()">
+<form>
 <div class="form-group row">
   <div class="col-md-2">
     <label class="col-md-2 ">Title:</label>
   </div>
   <div class="col-md-10">
-    <input class="form-control" type="text" value="{{ book.title }}" readonly/>
+    <input class="form-control" type="text" value="{{ book.description }}" readonly/>
   </div>
 </div>
 
@@ -25,7 +25,7 @@
     <label class="col-md-2 ">Unit cost:</label>
   </div>
   <div class="col-md-10">
-    <input  class="form-control" type="text" value="{{ book.unitCost }}" readonly/>
+    <input  class="form-control" type="text" value="{{ book.unitPrice }}" readonly/>
   </div>
 </div>
 
@@ -34,13 +34,13 @@
     <label class="col-md-2 ">Number of Pages:</label>
   </div>
   <div class="col-md-10">
-    <input  class="form-control" type="text" value="{{ book.nbOfPages }}" readonly/>
+    <input  class="form-control" type="text" value="{{ book.nbOfpages }}" readonly/>
   </div>
 </div>
 
 <div class="form-group row">
   <div class="col-md-2">
-    <label class="col-md-2 ">ISMN:</label>
+    <label class="col-md-2 ">ISBN:</label>
   </div>
   <div class="col-md-10">
     <input  class="form-control" type="text" value="{{ book.isbn }}" readonly/>

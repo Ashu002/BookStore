@@ -7,6 +7,8 @@ import { AppComponent } from './app.component';
 import { BookListComponent } from './book-list/book-list.component';
 import { BookDetailComponent } from './book-detail/book-detail.component';
 import { BookFormComponent } from './book-form/book-form.component';
+import {BookApi} from "./service/api/BookApi";
+import {HttpModule} from "@angular/http";
 
 @NgModule({
   declarations: [
@@ -16,11 +18,12 @@ import { BookFormComponent } from './book-form/book-form.component';
     BookFormComponent
   ],
   imports: [
+    HttpModule,
     BrowserModule,
     AppRoutingModule,
     FormsModule // <-- import the FormsModule before binding with [(ngModel)]
   ],
-  providers: [],
+  providers: [BookApi],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

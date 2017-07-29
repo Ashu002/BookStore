@@ -90,7 +90,7 @@
         <dependency>
             <groupId>org.jboss.resteasy</groupId>
             <artifactId>resteasy-jackson-provider</artifactId>
-            <version>${version.resteasy}</version>
+            <version>${venrsion.resteasy}</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
